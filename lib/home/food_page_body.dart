@@ -1,3 +1,7 @@
+import 'package:eco_app/utils/colors.dart';
+import 'package:eco_app/widgets/big_text.dart';
+import 'package:eco_app/widgets/icon_and_text_widget.dart';
+import 'package:eco_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class FoodPageBody extends StatefulWidget {
@@ -8,12 +12,13 @@ class FoodPageBody extends StatefulWidget {
 }
 
 class _FoodPageBodyState extends State<FoodPageBody> {
+  PageController _pageController = PageController(viewportFraction: 0.85);
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
       height: 320,
       child: PageView.builder(
+          controller: _pageController,
           itemCount: 5,
           itemBuilder: (context, index) {
             return _buildPageItem(index);
@@ -27,7 +32,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       children: [
         Container(
           height: 220,
-          margin: EdgeInsets.symmetric(horizontal: 5),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: index.isEven
@@ -43,16 +48,60 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 140,
-            margin: EdgeInsets.only(left: 40, right: 40, bottom: 10),
+            height: 120,
+            margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
-              color: index.isEven
-                  ? const Color(0xFF69c5df)
-                  : const Color(0xFF9294cc),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/image/food01.jpg'),
+              color: Colors.white,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BigText(text: 'Chinese Side'),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Wrap(
+                        // put children horizontally by default
+                        children: List.generate(
+                          5,
+                          (index) => Icon(
+                            Icons.star,
+                            color: AppColors.mainColor,
+                            size: 15,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      SmallText(text: '4.5'),
+                      SizedBox(width: 10),
+                      SmallText(text: '1287 comments')
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconAndTextWidget(
+                        icon: Icons.circle_sharp,
+                        text: 'Normal',
+                        iconColor: AppColors.iconColor1,
+                      ),
+                      IconAndTextWidget(
+                        icon: Icons.location_on,
+                        text: '1.7km',
+                        iconColor: AppColors.mainColor,
+                      ),
+                      IconAndTextWidget(
+                        icon: Icons.access_time_rounded,
+                        text: '32min',
+                        iconColor: AppColors.iconColor2,
+                      )
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

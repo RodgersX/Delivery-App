@@ -2,8 +2,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:eco_app/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/colors.dart';
-import '../widgets/widgets.dart';
+import '../../utils/colors.dart';
+import '../../widgets/widgets.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);

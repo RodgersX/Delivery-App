@@ -2,8 +2,8 @@ import 'package:eco_app/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 import '../home/food_page_body.dart';
-import '../utils/colors.dart';
-import '../widgets/widgets.dart';
+import '../../utils/colors.dart';
+import '../../widgets/widgets.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);

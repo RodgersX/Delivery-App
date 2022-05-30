@@ -4,14 +4,14 @@ class Dimensions {
   static double screenHeight = Get.context!.height;
   static double screenWidth = Get.context!.width;
 
-  // 844/220
+  // 781/220
   static double pageViewContainer = screenHeight / 3.84;
-  // 844/120
+  // 781/120
   static double pageViewTextContainer = screenHeight / 7.03;
-  // 844/320
+  // 781/320
   static double pageView = screenHeight / 2.64;
 
-  // 844/10 dynamic height for padding and margin
+  // 781/10 dynamic height for padding and margin
   static double height10 = screenHeight / 84.4;
 
   static double height15 = screenHeight / 56.27;

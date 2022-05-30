@@ -1,6 +1,6 @@
-import 'package:eco_app/home/food_page_body.dart';
 import 'package:flutter/material.dart';
 
+import '../home/food_page_body.dart';
 import '../utils/colors.dart';
 import '../widgets/widgets.dart';
 
@@ -19,8 +19,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
         children: [
           Container(
             child: Container(
-              margin: EdgeInsets.only(top: 65, bottom: 15),
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.only(top: 65, bottom: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -31,7 +31,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                       Row(
                         children: [
                           SmallText(text: 'Nairobi', color: Colors.black54),
-                          Icon(Icons.arrow_drop_down_rounded)
+                          const Icon(Icons.arrow_drop_down_rounded)
                         ],
                       ),
                     ],
@@ -40,7 +40,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                     child: Container(
                       width: 45,
                       height: 45,
-                      child: Icon(Icons.search, color: Colors.white),
+                      child: const Icon(Icons.search, color: Colors.white),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: AppColors.mainColor,
@@ -51,7 +51,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
-          FoodPageBody(),
+          const FoodPageBody(),
         ],
       ),
     );

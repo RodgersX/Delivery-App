@@ -1,5 +1,6 @@
-import 'package:eco_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/small_text.dart';
 
 class IconAndTextWidget extends StatelessWidget {
   final IconData icon;
@@ -17,7 +18,7 @@ class IconAndTextWidget extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, color: iconColor),
-        SizedBox(width: 5),
+        const SizedBox(width: 5),
         SmallText(text: text),
       ],
     );

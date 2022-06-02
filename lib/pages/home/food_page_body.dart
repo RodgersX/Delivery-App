@@ -248,7 +248,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   left: 15,
                   right: 15,
                 ),
-                child: AppColumn(text: 'Chinese Side'),
+                child: const AppColumn(text: 'Chinese Side'),
               ),
             ),
           ),

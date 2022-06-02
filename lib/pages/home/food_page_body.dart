@@ -1,8 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:eco_app/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/colors.dart';
+import '../../utils/utils.dart';
 import '../../widgets/widgets.dart';
 
 class FoodPageBody extends StatefulWidget {
@@ -55,8 +54,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           position: _currPageValue,
           decorator: DotsDecorator(
             activeColor: AppColors.mainColor,
-            size: Size.square(9),
-            activeSize: Size(18, 9),
+            size: const Size.square(9),
+            activeSize: const Size(18, 9),
             activeShape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -72,7 +71,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               BigText(text: 'Popular'),
               SizedBox(width: Dimensions.width10),
               Container(
-                margin: EdgeInsets.only(bottom: 3),
+                margin: const EdgeInsets.only(bottom: 3),
                 child: BigText(
                   text: '.',
                   color: Colors.black26,
@@ -80,7 +79,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               SizedBox(width: Dimensions.width10),
               Container(
-                margin: EdgeInsets.only(bottom: 2),
+                margin: const EdgeInsets.only(bottom: 2),
                 child: SmallText(text: 'Food Pairing'),
               )
             ],
@@ -89,7 +88,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         // list of food and images
         ListView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: 10,
           itemBuilder: (context, index) {
             return Container(
@@ -106,7 +105,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimensions.radius20),
                       color: Colors.white,
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage('assets/image/food01.jpg'),
                       ),
@@ -116,7 +115,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   Expanded(
                     child: Container(
                       height: Dimensions.listViewTextContSize,
-                      padding: EdgeInsets.only(),
+                      padding: const EdgeInsets.only(),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(Dimensions.radius20),
@@ -249,53 +248,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   left: 15,
                   right: 15,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BigText(text: 'Chinese Side'),
-                    SizedBox(height: Dimensions.height10),
-                    Row(
-                      children: [
-                        Wrap(
-                          // put children horizontally by default
-                          children: List.generate(
-                            5,
-                            (index) => const Icon(
-                              Icons.star,
-                              color: AppColors.mainColor,
-                              size: 15,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        SmallText(text: '4.5'),
-                        const SizedBox(width: 10),
-                        SmallText(text: '1287 comments')
-                      ],
-                    ),
-                    SizedBox(height: Dimensions.height20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        IconAndTextWidget(
-                          icon: Icons.circle_sharp,
-                          text: 'Normal',
-                          iconColor: AppColors.iconColor1,
-                        ),
-                        IconAndTextWidget(
-                          icon: Icons.location_on,
-                          text: '1.7km',
-                          iconColor: AppColors.mainColor,
-                        ),
-                        IconAndTextWidget(
-                          icon: Icons.access_time_rounded,
-                          text: '32min',
-                          iconColor: AppColors.iconColor2,
-                        )
-                      ],
-                    ),
-                  ],
-                ),
+                child: AppColumn(text: 'Chinese Side'),
               ),
             ),
           ),

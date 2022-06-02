@@ -1,6 +1,6 @@
-import 'package:eco_app/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/dimensions.dart';
 import '../widgets/small_text.dart';
 
 class IconAndTextWidget extends StatelessWidget {

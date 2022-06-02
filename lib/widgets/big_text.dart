@@ -1,5 +1,6 @@
-import 'package:eco_app/utils/dimensions.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/dimensions.dart';
 
 // ignore: must_be_immutable
 class BigText extends StatelessWidget {

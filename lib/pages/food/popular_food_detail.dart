@@ -1,3 +1,4 @@
+import 'package:eco_app/widgets/expandable_text_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/utils.dart';
@@ -12,6 +13,7 @@ class PopularFoodDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          // background image
           Positioned(
             left: 0,
             right: 0,
@@ -26,6 +28,7 @@ class PopularFoodDetail extends StatelessWidget {
               ),
             ),
           ),
+          // icon widgets
           Positioned(
             top: Dimensions.height45,
             left: Dimensions.width20,
@@ -38,6 +41,7 @@ class PopularFoodDetail extends StatelessWidget {
               ],
             ),
           ),
+          // introduction of food
           Positioned(
             left: 0,
             right: 0,
@@ -62,9 +66,19 @@ class PopularFoodDetail extends StatelessWidget {
                     AppColumn(text: 'Chinese Side'),
                     SizedBox(height: Dimensions.height20),
                     BigText(text: 'Introduce'),
+                    SizedBox(height: Dimensions.height20),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: ExpandableTextWidget(
+                          text:
+                              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusamus velit vero quis vel autem ratione animi voluptates incidunt ipsum, quidem veritatis soluta numquam. Dolorem unde, fuga porro, voluptates asperiores consectetur quisquam ad, cum consequatur possimus deserunt nihil tempora mollitia quaerat odio quas? Harum pariatur laudantium ut voluptatum? Voluptatibus veritatis eius iste sit vel delectus quod, iusto magni numquam eaque in sed, sapiente laboriosam facere hic esse tenetur enim nemo ut earum quo, exercitationem quis asperiores rerum. Earum fugit obcaecati dolorum laboriosam nulla quod aliquid sunt, eaque, laborum labore excepturi consequuntur nemo et accusamus adipisci rem eum veniam expedita iusto.',
+                        ),
+                      ),
+                    )
                   ],
                 )),
           ),
+          // expandable text widget
         ],
       ),
       bottomNavigationBar: Container(

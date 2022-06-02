@@ -1,4 +1,3 @@
-import 'package:eco_app/widgets/expandable_text_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/utils.dart';

@@ -1,8 +1,7 @@
-import 'package:eco_app/utils/colors.dart';
-import 'package:eco_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/dimensions.dart';
+import '../utils/utils.dart';
+import '../widgets/widgets.dart';
 
 class ExpandableTextWidget extends StatefulWidget {
   final String text;

@@ -1,4 +1,5 @@
 import 'package:eco_app/controllers/recommended_product_controller.dart';
+import 'package:eco_app/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,10 +24,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MainFoodPage(),
+      initialRoute: RouteHelper.initial,
+      home: MainFoodPage(),
+      getPages: RouteHelper.routes,
     );
   }
 }

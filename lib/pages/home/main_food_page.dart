@@ -20,7 +20,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
           Container(
             child: Container(
               margin: EdgeInsets.only(
-                top: Dimensions.height45,
+                top: Dimensions.height65,
                 bottom: Dimensions.height15,
               ),
               padding: EdgeInsets.symmetric(

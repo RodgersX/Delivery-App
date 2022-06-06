@@ -1,12 +1,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:eco_app/controllers/recommended_product_controller.dart';
-import 'package:eco_app/models/products_model.dart';
-import 'package:eco_app/pages/food/popular_food_detail.dart';
 import 'package:eco_app/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
+import '../../models/products_model.dart';
 import '../../utils/utils.dart';
 import '../../widgets/widgets.dart';
 
@@ -48,18 +47,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           return popularProducts.isLoaded
               ? Container(
                   height: Dimensions.pageView,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.toNamed(RouteHelper.getPopularFood());
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: popularProducts.popularProductList.length,
+                    itemBuilder: (context, index) {
+                      return _buildPageItem(
+                          index, popularProducts.popularProductList[index]);
                     },
-                    child: PageView.builder(
-                      controller: _pageController,
-                      itemCount: popularProducts.popularProductList.length,
-                      itemBuilder: (context, index) {
-                        return _buildPageItem(
-                            index, popularProducts.popularProductList[index]);
-                      },
-                    ),
                   ),
                 )
               : const CircularProgressIndicator(color: AppColors.mainColor);
@@ -241,18 +235,23 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       transform: matrix,
       child: Stack(
         children: [
-          Container(
-            height: Dimensions.pageViewContainer,
-            margin: EdgeInsets.symmetric(horizontal: Dimensions.width10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radius30),
-              color: index.isEven
-                  ? const Color(0xFF69c5df)
-                  : const Color(0xFF9294cc),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                    '${AppConstants.BASE_URL}${AppConstants.UPLOAD_URL}${popularProduct.img!}'),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(RouteHelper.getPopularFood(index));
+            },
+            child: Container(
+              height: Dimensions.pageViewContainer,
+              margin: EdgeInsets.symmetric(horizontal: Dimensions.width10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
+                color: index.isEven
+                    ? const Color(0xFF69c5df)
+                    : const Color(0xFF9294cc),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      '${AppConstants.BASE_URL}${AppConstants.UPLOAD_URL}${popularProduct.img!}'),
+                ),
               ),
             ),
           ),

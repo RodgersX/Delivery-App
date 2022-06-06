@@ -1,12 +1,14 @@
-import 'package:eco_app/pages/home/main_food_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../pages/home/main_food_page.dart';
 import '../../utils/utils.dart';
 import '../../widgets/widgets.dart';
 
+// ignore: must_be_immutable
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({Key? key}) : super(key: key);
+  int pageId;
+  PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class PopularFoodDetail extends StatelessWidget {
           ),
           // icon widgets
           Positioned(
-            top: Dimensions.height45,
+            top: Dimensions.height65,
             left: Dimensions.width20,
             right: Dimensions.width20,
             child: Row(

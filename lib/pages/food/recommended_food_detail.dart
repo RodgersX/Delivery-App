@@ -1,3 +1,4 @@
+import 'package:eco_app/controllers/recommended_product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,10 +7,14 @@ import '../../utils/utils.dart';
 import '../../widgets/widgets.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const RecommendedFoodDetail({Key? key, required this.pageId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -34,10 +39,9 @@ class RecommendedFoodDetail extends StatelessWidget {
                 // margin: EdgeInsets.symmetric(horizontal: Dimensions.width20),
                 padding: EdgeInsets.only(top: 5, bottom: 10),
                 width: double.maxFinite,
-
                 child: Center(
                   child: BigText(
-                    text: 'Chinese Side',
+                    text: product.name,
                     size: Dimensions.font26,
                   ),
                 ),
@@ -54,8 +58,8 @@ class RecommendedFoodDetail extends StatelessWidget {
             backgroundColor: AppColors.mainBlackColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                'assets/image/food01.jpg',
+              background: Image.network(
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -67,8 +71,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: Dimensions.width20),
                   child: ExpandableTextWidget(
-                    text:
-                        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusamus velit vero quis vel autem ratione animi voluptates incidunt ipsum, quidem veritatis soluta numquam. Dolorem unde, fuga porro, voluptates asperiores consectetur quisquam ad, cum consequatur possimus deserunt nihil tempora mollitia quaerat odio quas? Harum pariatur laudantium ut voluptatum? Voluptatibus veritatis eius iste sit vel delectus quod, iusto magni numquam eaque in sed, sapiente laboriosam facere hic esse tenetur enim nemo ut earum quo, exercitationem quis asperiores rerum. Earum fugit obcaecati dolorum laboriosam nulla quod aliquid sunt, eaque, laborum labore excepturi consequuntur nemo et accusamus adipisci rem eum veniam expedita iusto.Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusamus velit vero quis vel autem ratione animi voluptates incidunt ipsum, quidem veritatis soluta numquam. Dolorem unde, fuga porro, voluptates asperiores consectetur quisquam ad, cum consequatur possimus deserunt nihil tempora mollitia quaerat odio quas? Harum pariatur laudantium ut voluptatum? Voluptatibus veritatis eius iste sit vel delectus quod, iusto magni numquam eaque in sed, sapiente laboriosam facere hic esse tenetur enim nemo ut earum quo, exercitationem quis asperiores rerum. Earum fugit obcaecati dolorum laboriosam nulla quod aliquid sunt, eaque, laborum labore excepturi consequuntur nemo et accusamus adipisci rem eum veniam expedita iusto.Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusamus velit vero quis vel autem ratione animi voluptates incidunt ipsum, quidem veritatis soluta numquam. Dolorem unde, fuga porro, voluptates asperiores consectetur quisquam ad, cum consequatur possimus deserunt nihil tempora mollitia quaerat odio quas? Harum pariatur laudantium ut voluptatum? Voluptatibus veritatis eius iste sit vel delectus quod, iusto magni numquam eaque in sed, sapiente laboriosam facere hic esse tenetur enim nemo ut earum quo, exercitationem quis asperiores rerum. Earum fugit obcaecati dolorum laboriosam nulla quod aliquid sunt, eaque, laborum labore excepturi consequuntur nemo et accusamus adipisci rem eum veniam expedita iusto.Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusamus velit vero quis vel autem ratione animi voluptates incidunt ipsum, quidem veritatis soluta numquam. Dolorem unde, fuga porro, voluptates asperiores consectetur quisquam ad, cum consequatur possimus deserunt nihil tempora mollitia quaerat odio quas? Harum pariatur laudantium ut voluptatum? Voluptatibus veritatis eius iste sit vel delectus quod, iusto magni numquam eaque in sed, sapiente laboriosam facere hic esse tenetur enim nemo ut earum quo, exercitationem quis asperiores rerum. Earum fugit obcaecati dolorum laboriosam nulla quod aliquid sunt, eaque, laborum labore excepturi consequuntur nemo et accusamus adipisci rem eum veniam expedita iusto.Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusamus velit vero quis vel autem ratione animi voluptates incidunt ipsum, quidem veritatis soluta numquam. Dolorem unde, fuga porro, voluptates asperiores consectetur quisquam ad, cum consequatur possimus deserunt nihil tempora mollitia quaerat odio quas? Harum pariatur laudantium ut voluptatum? Voluptatibus veritatis eius iste sit vel delectus quod, iusto magni numquam eaque in sed, sapiente laboriosam facere hic esse tenetur enim nemo ut earum quo, exercitationem quis asperiores rerum. Earum fugit obcaecati dolorum laboriosam nulla quod aliquid sunt, eaque, laborum labore excepturi consequuntur nemo et accusamus adipisci rem eum veniam expedita iusto.',
+                    text: product.description,
                   ),
                 ),
               ],
@@ -142,7 +145,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                     horizontal: Dimensions.width20,
                   ),
                   child: BigText(
-                    text: '\$10 | Add to cart',
+                    text: '\$${product.price} | Add to cart',
                     color: Colors.white,
                   ),
                   decoration: BoxDecoration(

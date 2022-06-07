@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/popular_product_controller.dart';
 import '../../pages/home/main_food_page.dart';
 import '../../utils/utils.dart';
 import '../../widgets/widgets.dart';
 
 // ignore: must_be_immutable
 class PopularFoodDetail extends StatelessWidget {
-  int pageId;
-  PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
+  final int pageId;
+  const PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductList[pageId];
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -23,17 +27,18 @@ class PopularFoodDetail extends StatelessWidget {
             child: Container(
               width: double.maxFinite,
               height: Dimensions.popularFoodImgSize,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/image/food01.jpg'),
+                  image: NetworkImage(
+                      '${AppConstants.BASE_URL}${AppConstants.UPLOAD_URL}${product.img}'),
                 ),
               ),
             ),
           ),
           // icon widgets
           Positioned(
-            top: Dimensions.height65,
+            top: Dimensions.height45,
             left: Dimensions.width20,
             right: Dimensions.width20,
             child: Row(
@@ -71,15 +76,14 @@ class PopularFoodDetail extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const AppColumn(text: 'Chinese Side'),
+                    AppColumn(text: product.name),
                     SizedBox(height: Dimensions.height20),
                     BigText(text: 'Introduce'),
                     SizedBox(height: Dimensions.height20),
-                    const Expanded(
+                    Expanded(
                       child: SingleChildScrollView(
                         child: ExpandableTextWidget(
-                          text:
-                              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusamus velit vero quis vel autem ratione animi voluptates incidunt ipsum, quidem veritatis soluta numquam. Dolorem unde, fuga porro, voluptates asperiores consectetur quisquam ad, cum consequatur possimus deserunt nihil tempora mollitia quaerat odio quas? Harum pariatur laudantium ut voluptatum? Voluptatibus veritatis eius iste sit vel delectus quod, iusto magni numquam eaque in sed, sapiente laboriosam facere hic esse tenetur enim nemo ut earum quo, exercitationem quis asperiores rerum. Earum fugit obcaecati dolorum laboriosam nulla quod aliquid sunt, eaque, laborum labore excepturi consequuntur nemo et accusamus adipisci rem eum veniam expedita iusto.',
+                          text: product.description,
                         ),
                       ),
                     )
@@ -130,7 +134,7 @@ class PopularFoodDetail extends StatelessWidget {
                 horizontal: Dimensions.width20,
               ),
               child: BigText(
-                text: '\$10 | Add to cart',
+                text: '\$${product.price} | Add to cart',
                 color: Colors.white,
               ),
               decoration: BoxDecoration(

@@ -1,7 +1,8 @@
-import 'package:eco_app/pages/food/popular_food_detail.dart';
-import 'package:eco_app/pages/food/recommended_food_detail.dart';
-import 'package:eco_app/pages/home/main_food_page.dart';
 import 'package:get/route_manager.dart';
+
+import '../pages/food/popular_food_detail.dart';
+import '../pages/food/recommended_food_detail.dart';
+import '../pages/home/main_food_page.dart';
 
 class RouteHelper {
   static const String initial = '/';
@@ -10,7 +11,8 @@ class RouteHelper {
 
   static String getInitial() => '$initial';
   static String getPopularFood(int pageId) => '$popularFood?pageId=$pageId';
-  static String getRecommendedFood() => '$recommendedFood';
+  static String getRecommendedFood(int pageId) =>
+      '$recommendedFood?pageId=$pageId';
 
   static List<GetPage> routes = [
     GetPage(
@@ -23,15 +25,16 @@ class RouteHelper {
     GetPage(
       name: popularFood,
       page: () {
-        var pageId = int.parse(Get.parameters['pageId']!);
-        return PopularFoodDetail(pageId: pageId);
+        var pageId = Get.parameters['pageId'];
+        return PopularFoodDetail(pageId: int.parse(pageId!));
       },
       transition: Transition.fadeIn,
     ),
     GetPage(
       name: recommendedFood,
       page: () {
-        return RecommendedFoodDetail();
+        var pageId = Get.parameters['pageId'];
+        return RecommendedFoodDetail(pageId: int.parse(pageId!));
       },
       transition: Transition.fadeIn,
     )

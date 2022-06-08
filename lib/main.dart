@@ -1,12 +1,11 @@
-import 'package:eco_app/controllers/recommended_product_controller.dart';
-import 'package:eco_app/routes/route_helper.dart';
+import './controllers/recommended_product_controller.dart';
+import './routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import './controllers/popular_product_controller.dart';
 import './pages/home/main_food_page.dart';
 import 'helper/dependencies.dart' as dep;
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
     Get.find<RecommendedProductController>().getRecommendedProductList();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Eco App',
       initialRoute: RouteHelper.initial,
       home: MainFoodPage(),
       getPages: RouteHelper.routes,

@@ -1,3 +1,4 @@
+import 'package:eco_app/controllers/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,8 @@ class PopularFoodDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     var product =
         Get.find<PopularProductController>().popularProductList[pageId];
-    Get.find<PopularProductController>().initProductData();
+    Get.find<PopularProductController>()
+        .initProduct(product, Get.find<CartController>());
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -78,14 +80,14 @@ class PopularFoodDetail extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(text: product.name),
+                    AppColumn(text: product.name!),
                     SizedBox(height: Dimensions.height20),
                     BigText(text: 'Introduce'),
                     SizedBox(height: Dimensions.height20),
                     Expanded(
                       child: SingleChildScrollView(
                         child: ExpandableTextWidget(
-                          text: product.description,
+                          text: product.description!,
                         ),
                       ),
                     )
@@ -133,7 +135,7 @@ class PopularFoodDetail extends StatelessWidget {
                           const Icon(Icons.remove, color: AppColors.signColor),
                     ),
                     SizedBox(width: Dimensions.width10 / 2),
-                    BigText(text: '${popularProduct.quantity}'),
+                    BigText(text: '${popularProduct.inCartItems}'),
                     SizedBox(width: Dimensions.width10 / 2),
                     GestureDetector(
                       behavior: HitTestBehavior.opaque,
@@ -150,9 +152,14 @@ class PopularFoodDetail extends StatelessWidget {
                   vertical: Dimensions.height20,
                   horizontal: Dimensions.width20,
                 ),
-                child: BigText(
-                  text: '\$${product.price} | Add to cart',
-                  color: Colors.white,
+                child: GestureDetector(
+                  onTap: () {
+                    popularProduct.addItem(product);
+                  },
+                  child: BigText(
+                    text: '\$${product.price} | Add to cart',
+                    color: Colors.white,
+                  ),
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
